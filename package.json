@@ -1,9 +1,12 @@
 {
-  "name": "http-proxy",
-  "version": "1.17.0",
+  "name": "@hokify/http-proxy",
+  "version": "1.18.0",
+  "publishConfig": {
+    "access": "public"
+  },
   "repository": {
     "type": "git",
-    "url": "https://github.com/nodejitsu/node-http-proxy.git"
+    "url": "https://github.com/hokify/node-http-proxy.git"
   },
   "description": "HTTP proxying for the masses",
   "author": "Charlie Robbins <charlie.robbins@gmail.com>",
@@ -12,20 +15,20 @@
   ],
   "main": "index.js",
   "dependencies": {
-    "eventemitter3": "^3.0.0",
+    "eventemitter3": "^3.1.2",
     "requires-port": "^1.0.0",
-    "follow-redirects": "^1.0.0"
+    "follow-redirects": "^1.7.0"
   },
   "devDependencies": {
-    "async": "^2.0.0",
-    "concat-stream": "^1.6.2",
+    "async": "^2.6.2",
+    "concat-stream": "^2.0.0",
     "expect.js": "~0.3.1",
-    "mocha": "^3.5.3",
-    "nyc": "^11.7.1",
-    "semver": "^5.0.3",
-    "socket.io": "^2.1.0",
-    "socket.io-client": "^2.1.0",
-    "sse": "0.0.6",
+    "mocha": "^6.1.4",
+    "nyc": "^14.1.1",
+    "semver": "^6.0.0",
+    "socket.io": "^2.2.0",
+    "socket.io-client": "^2.2.0",
+    "sse": "0.0.8",
     "ws": "^7.0.0"
   },
   "scripts": {

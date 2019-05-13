@@ -1,3 +1,16 @@
+# fork
+this is a fork of https://github.com/nodejitsu/node-http-proxy
+including the following changes:
+* Upgrade all libraries
+* Add error source for client/proxy requests
+
+
+To install this fork, use:
+```
+npm install --save @hokify/http-proxy
+```
+
+
 <p align="center">
   <img src="https://raw.github.com/nodejitsu/node-http-proxy/master/doc/logo.png"/>
 </p>
@@ -419,7 +432,7 @@ If you are using the `proxyServer.listen` method, the following options are also
 * (DEPRECATED) `proxySocket`: Deprecated in favor of `open`.
 
 ```js
-var httpProxy = require('http-proxy');
+var httpProxy = require('@hokify/http--proxy');
 // Error example
 //
 // Http Proxy Server with bad target
@@ -534,7 +547,7 @@ Logo created by [Diego Pasquali](http://dribbble.com/diegopq)
 
 ### Contributing and Issues
 
-* Read carefully our [Code Of Conduct](https://github.com/nodejitsu/node-http-proxy/blob/master/CODE_OF_CONDUCT.md)
+* Read carefully our [Code Of Conduct](https://github.com/hokify/node-http-proxy/blob/master/CODE_OF_CONDUCT.md)
 * Search on Google/Github
 * If you can't find anything, open an issue
 * If you feel comfortable about fixing the issue, fork the repo
