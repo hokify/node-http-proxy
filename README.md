@@ -12,10 +12,10 @@ npm install --save @hokify/http-proxy
 
 
 <p align="center">
-  <img src="https://raw.github.com/nodejitsu/node-http-proxy/master/doc/logo.png"/>
+  <img src="https://raw.github.com/http-party/node-http-proxy/master/doc/logo.png"/>
 </p>
 
-# node-http-proxy [![Build Status](https://travis-ci.org/nodejitsu/node-http-proxy.svg?branch=master)](https://travis-ci.org/nodejitsu/node-http-proxy) [![codecov](https://codecov.io/gh/nodejitsu/node-http-proxy/branch/master/graph/badge.svg)](https://codecov.io/gh/nodejitsu/node-http-proxy)
+# node-http-proxy [![Build Status](https://travis-ci.org/http-party/node-http-proxy.svg?branch=master)](https://travis-ci.org/http-party/node-http-proxy) [![codecov](https://codecov.io/gh/http-party/node-http-proxy/branch/master/graph/badge.svg)](https://codecov.io/gh/http-party/node-http-proxy)
 
 `node-http-proxy` is an HTTP programmable proxying library that supports
 websockets. It is suitable for implementing components such as reverse
@@ -58,7 +58,7 @@ Click [here](UPGRADING.md)
 ### Core Concept
 
 A new proxy is created by calling `createProxyServer` and passing
-an `options` object as argument ([valid properties are available here](lib/http-proxy.js#L22-L50))
+an `options` object as argument ([valid properties are available here](lib/http-proxy.js#L26-L42))
 
 ```javascript
 var httpProxy = require('http-proxy');
@@ -150,7 +150,7 @@ var proxy = httpProxy.createProxyServer({});
 var server = http.createServer(function(req, res) {
   // You can define here your custom logic to handle the request
   // and then proxy the request.
-  proxy.web(req, res, { target: 'http://127.0.0.1:5060' });
+  proxy.web(req, res, { target: 'http://127.0.0.1:5050' });
 });
 
 console.log("listening on port 5050")
@@ -188,7 +188,7 @@ var server = http.createServer(function(req, res) {
   // You can define here your custom logic to handle the request
   // and then proxy the request.
   proxy.web(req, res, {
-    target: 'http://127.0.0.1:5060'
+    target: 'http://127.0.0.1:5050'
   });
 });
 
@@ -514,12 +514,12 @@ data.
       selfHandleResponse : true
     };
     proxy.on('proxyRes', function (proxyRes, req, res) {
-        var body = new Buffer('');
-        proxyRes.on('data', function (data) {
-            body = Buffer.concat([body, data]);
+        var body = [];
+        proxyRes.on('data', function (chunk) {
+            body.push(chunk);
         });
         proxyRes.on('end', function () {
-            body = body.toString();
+            body = Buffer.concat(body).toString();
             console.log("res from proxied server:", body);
             res.end("my response to cli");
         });
